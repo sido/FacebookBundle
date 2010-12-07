@@ -1,9 +1,9 @@
 <?php
 
 
-namespace Bundle\Kris\FacebookBundle\TokenParser;
+namespace Bundle\Kris\FacebookBundle\Twig\TokenParser;
 
-use Bundle\Kris\FacebookBundle\Node\FacebookConnectNode;
+use Bundle\Kris\FacebookBundle\Twig\Node\FacebookConnectNode;
 
 class FacebookTokenParser extends \Twig_TokenParser
 {

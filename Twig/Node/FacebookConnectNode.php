@@ -1,6 +1,6 @@
 <?php
 
-namespace Bundle\Kris\FacebookBundle\Node;
+namespace Bundle\Kris\FacebookBundle\Twig\Node;
 
 class FacebookConnectNode extends \Twig_Node
 {
