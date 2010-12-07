@@ -2,7 +2,6 @@
 
 namespace Bundle\Kris\FacebookBundle\Security\Firewall;
 
-
 use Symfony\Component\HttpKernel\Security\Firewall\PreAuthenticatedListener;
 use Symfony\Component\HttpFoundation\Request;
 

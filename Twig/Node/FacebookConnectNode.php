@@ -14,7 +14,7 @@ class FacebookConnectNode extends \Twig_Node
             ->write("\n")
         ;
     }
-    
+
     protected function getTemplate()
     {
         return <<<EOF
