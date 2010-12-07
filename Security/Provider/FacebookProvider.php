@@ -15,23 +15,6 @@ class FacebookProvider implements UserProviderInterface
         $this->facebook = $facebook;
     }
 
-    protected function getFacebookSession()
-    {
-        try {
-            // Find out if a session already exist. If so, check that it is still valid.
-            if ($this->facebook->getSession()) {
-                // Make sure that session is still valid
-                $uid = $this->facebook->getUser();
-
-                return $uid;
-            }
-
-            return false;
-        } catch (\FacebookApiException $e) {
-            return false;
-        }
-    }
-
     public function loadUserByUsername($username)
     {
         if (!$uid = $this->getFacebookSession()) {
@@ -39,5 +22,19 @@ class FacebookProvider implements UserProviderInterface
         }
 
         return new User($uid, uniqid(), array('ROLE_USER'), true, true, true, true);
+    }
+
+    protected function getFacebookSession()
+    {
+        try {
+            // Find out if a session already exist. If so, check that it is still valid.
+            if ($this->facebook->getSession()) {
+                // Make sure that session is still valid
+                return $this->facebook->getUser();
+            }
+        } catch (\FacebookApiException $e) {
+        }
+
+        return false;
     }
 }
