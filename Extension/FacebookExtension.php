@@ -2,7 +2,7 @@
 
 namespace Bundle\Kris\FacebookBundle\Extension;
 
-use Bundle\FacebookBundle\TokenParser\FacebookTokenParser;
+use Bundle\Kris\FacebookBundle\TokenParser\FacebookTokenParser;
 
 /**
  *

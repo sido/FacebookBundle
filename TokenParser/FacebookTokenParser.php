@@ -3,7 +3,7 @@
 
 namespace Bundle\Kris\FacebookBundle\TokenParser;
 
-use Bundle\FacebookBundle\Node\FacebookConnectNode;
+use Bundle\Kris\FacebookBundle\Node\FacebookConnectNode;
 
 class FacebookTokenParser extends \Twig_TokenParser
 {
@@ -18,7 +18,7 @@ class FacebookTokenParser extends \Twig_TokenParser
     {
         $this->parser->getStream()->expect(\Twig_Token::BLOCK_END_TYPE);
 
-        return new FaceBookConnectNode(array(), array(), $token->getLine());
+        return new FacebookConnectNode(array(), array(), $token->getLine());
     }
 
     /**

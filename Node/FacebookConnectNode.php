@@ -2,7 +2,6 @@
 
 namespace Bundle\Kris\FacebookBundle\Node;
 
-
 class FacebookConnectNode extends \Twig_Node
 {
     public function compile($compiler)
@@ -34,7 +33,7 @@ class FacebookConnectNode extends \Twig_Node
     e.async = true;
     document.getElementById('fb-root').appendChild(e);
   }());
-</script>    
+</script>
 EOF;
     }
 }
