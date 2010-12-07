@@ -2,7 +2,7 @@
 
 namespace Bundle\Kris\FacebookBundle\Security\Provider;
 
-use Symfony\Component\Security\User\User;
+use Bundle\Kris\FacebookBundle\User;
 use Symfony\Component\Security\User\UserProviderInterface;
 use Symfony\Component\Security\Exception\UsernameNotFoundException;
 
@@ -21,7 +21,7 @@ class FacebookProvider implements UserProviderInterface
             throw new UsernameNotFoundException('The user cannot be authenticated');
         }
 
-        return new User($uid, uniqid(), array('ROLE_USER'), true, true, true, true);
+        return new User($uid, array('ROLE_USER'));
     }
 
     protected function getFacebookSession()
