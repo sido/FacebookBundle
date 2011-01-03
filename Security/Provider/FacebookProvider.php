@@ -4,6 +4,7 @@ namespace Bundle\Kris\FacebookBundle\Security\Provider;
 
 use Bundle\Kris\FacebookBundle\User;
 use Symfony\Component\Security\User\UserProviderInterface;
+use Symfony\Component\Security\User\AccountInterface;
 use Symfony\Component\Security\Exception\UsernameNotFoundException;
 
 class FacebookProvider implements UserProviderInterface
@@ -36,5 +37,9 @@ class FacebookProvider implements UserProviderInterface
         }
 
         return false;
+    }
+
+    public function loadUserByAccount(AccountInterface $account)
+    {
     }
 }
