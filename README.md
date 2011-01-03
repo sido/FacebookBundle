@@ -83,4 +83,4 @@ Include the login button in your templates
 
 Just add the following code in one of your templates:
 
-      {% facebook_connect_button %}
+      {{ facebook_connect_button() }}
