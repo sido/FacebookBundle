@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\DependencyInjection\Security\Factory\Security
 
 class FacebookFactory implements SecurityFactoryInterface
 {
-    public function create(ContainerBuilder $container, $id, $config, $userProvider, $providerIds, $defaultEntryPoint)
+    public function create(ContainerBuilder $container, $id, $config, $userProvider, $defaultEntryPoint)
     {
         $provider = 'security.authentication.provider.pre_authenticated.'.$id;
         $container
