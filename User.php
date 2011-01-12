@@ -79,4 +79,12 @@ class User implements AccountInterface
     public function eraseCredentials()
     {
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function equals(AccountInterface $account)
+    {
+        return $account instanceof Bundle\Kris\FacebookBundle\User && $this->username === $account->getUsername();
+    }
 }

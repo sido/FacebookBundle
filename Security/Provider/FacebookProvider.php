@@ -41,5 +41,6 @@ class FacebookProvider implements UserProviderInterface
 
     public function loadUserByAccount(AccountInterface $account)
     {
+        return $this->loadUserByUsername($account->getUsername());
     }
 }
