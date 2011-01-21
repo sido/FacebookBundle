@@ -13,7 +13,14 @@ class FacebookExtension extends Extension
         'security' => 'security.xml'
     );
 
-    public function apiLoad($config, ContainerBuilder $container)
+    public function apiLoad($configs, ContainerBuilder $container)
+    {
+        foreach ($configs as $config) {
+            $this->doApiLoad($config, $container);
+        }
+    }
+
+    protected function doApiLoad($config, ContainerBuilder $container)
     {
         if (!$container->hasDefinition('kris.facebook')) {
             $this->loadDefaults($container);
