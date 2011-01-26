@@ -43,4 +43,9 @@ class FacebookProvider implements UserProviderInterface
     {
         return $this->loadUserByUsername($account->getUsername());
     }
+
+    public function supportsClass($class)
+    {
+        return $class === 'Bundle\Kris\FacebookBundle\User';
+    }
 }
