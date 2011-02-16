@@ -2,14 +2,14 @@
 
 namespace Bundle\Kris\FacebookBundle\Tests\DependencyInjection;
 
-use Bundle\Kris\FacebookBundle\DependencyInjection\FacebookExtension;
+use Bundle\Kris\FacebookBundle\DependencyInjection\KrisFacebookExtension;
 
 class FacebookExtensionTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers Bundle\Kris\FacebookBundle\DependencyInjection\FacebookExtension::apiLoad
+     * @covers Bundle\Kris\FacebookBundle\DependencyInjection\KrisFacebookExtension::load
      */
-    public function testApiLoadLoadsDefaults()
+    public function testLoadLoadsDefaults()
     {
         $container = $this->getMock('Symfony\\Component\\DependencyInjection\\ContainerBuilder');
         $container
@@ -18,7 +18,7 @@ class FacebookExtensionTest extends \PHPUnit_Framework_TestCase
             ->with('kris.facebook')
             ->will($this->returnValue(false));
 
-        $extension = $this->getMockBuilder('Bundle\\Kris\\FacebookBundle\\DependencyInjection\\FacebookExtension')
+        $extension = $this->getMockBuilder('Bundle\\Kris\\FacebookBundle\\DependencyInjection\\KrisFacebookExtension')
             ->setMethods(array('loadDefaults'))
             ->getMock();
         $extension
@@ -26,13 +26,13 @@ class FacebookExtensionTest extends \PHPUnit_Framework_TestCase
             ->method('loadDefaults')
             ->with($container);
 
-        $extension->apiLoad(array(), $container);
+        $extension->load(array(), $container);
     }
 
     /**
-     * @covers Bundle\Kris\FacebookBundle\DependencyInjection\FacebookExtension::apiLoad
+     * @covers Bundle\Kris\FacebookBundle\DependencyInjection\KrisFacebookExtension::load
      */
-    public function testApiLoadDoesNotReloadDefaults()
+    public function testLoadDoesNotReloadDefaults()
     {
         $container = $this->getMock('Symfony\\Component\\DependencyInjection\\ContainerBuilder');
         $container
@@ -41,20 +41,20 @@ class FacebookExtensionTest extends \PHPUnit_Framework_TestCase
             ->with('kris.facebook')
             ->will($this->returnValue(true));
 
-        $extension = $this->getMockBuilder('Bundle\\Kris\\FacebookBundle\\DependencyInjection\\FacebookExtension')
+        $extension = $this->getMockBuilder('Bundle\\Kris\\FacebookBundle\\DependencyInjection\\KrisFacebookExtension')
             ->setMethods(array('loadDefaults'))
             ->getMock();
         $extension
             ->expects($this->never())
             ->method('loadDefaults');
 
-        $extension->apiLoad(array(), $container);
+        $extension->load(array(), $container);
     }
 
     /**
-     * @covers Bundle\Kris\FacebookBundle\DependencyInjection\FacebookExtension::apiLoad
+     * @covers Bundle\Kris\FacebookBundle\DependencyInjection\KrisFacebookExtension::load
      */
-    public function testApiLoadSetsAlias()
+    public function testLoadSetsAlias()
     {
         $alias = 'foo';
 
@@ -69,15 +69,15 @@ class FacebookExtensionTest extends \PHPUnit_Framework_TestCase
             ->method('setAlias')
             ->with($alias, 'kris.facebook');
 
-        $extension = new FacebookExtension();
-        $extension->apiLoad(array('alias' => $alias), $container);
+        $extension = new KrisFacebookExtension();
+        $extension->load(array(array('alias' => $alias)), $container);
     }
 
     /**
-     * @covers Bundle\Kris\FacebookBundle\DependencyInjection\FacebookExtension::apiLoad
+     * @covers Bundle\Kris\FacebookBundle\DependencyInjection\KrisFacebookExtension::load
      * @dataProvider parameterNames
      */
-    public function testApiLoadSetParameters($name)
+    public function testLoadSetParameters($name)
     {
         $value = 'foo';
 
@@ -92,8 +92,8 @@ class FacebookExtensionTest extends \PHPUnit_Framework_TestCase
             ->method('setParameter')
             ->with('kris.facebook.'.$name, $value);
 
-        $extension = new FacebookExtension();
-        $extension->apiLoad(array($name => $value), $container);
+        $extension = new KrisFacebookExtension();
+        $extension->load(array(array($name => $value)), $container);
     }
 
     public function parameterNames()
